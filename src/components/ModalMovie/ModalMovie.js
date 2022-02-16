@@ -1,7 +1,28 @@
 import Modal from 'react-bootstrap/Modal';
 import {Button} from 'react-bootstrap';
+import axios from 'axios';
+import {useRef} from 'react';
 
-function ModalMovie({cardInfo, show, handleClose}) {
+function Modalo({cardInfo, show, handleClose}) {
+    const commentInputRef = useRef("");
+
+     console.log(cardInfo)
+    // title, readyInMinutes, summary, vegetarian, instructions, sourceUrl, image, comment
+
+     const addToFav = async ()=>{
+        //  let comment = commentInputRef.current.value;
+        let fav = {title:cardInfo.title, release_date:cardInfo.release_date, poster_path:cardInfo.poster_path, overview:cardInfo.overview}
+       
+        await axios.post(`https://movie-hashem.herokuapp.com/addMovie`,fav)
+                   .then(()=>{
+                       console.log("Done :) ");
+                   }).catch((err)=>{
+                       console.log(err);
+                   });
+   
+    }
+
+
     return (
         <>
             <Modal show={show} onHide={handleClose} animation={false}>
@@ -13,15 +34,20 @@ function ModalMovie({cardInfo, show, handleClose}) {
                     <img alt="" src={cardInfo.image} />
                     <div>
                         <label htmlFor="op">Write Your Opinion</label>
-                        <input placeholder="Write Your Opinion" type="text" id="op" />
+                        <input ref={commentInputRef} placeholder="Write Your Opinion" type="text" id="op" />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary"> Add To Favorite </Button>
+                    <Button variant="primary"
+                     onClick={()=>{
+                        addToFav();
+                        handleClose();
+                     }}
+                    > Add To Favorite </Button>
                 </Modal.Footer>
             </Modal>
         </>
     )
 }
 
-export default ModalMovie;
+export default Modalo;

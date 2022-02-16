@@ -1,65 +1,30 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import {  Container, Row } from 'react-bootstrap';
+
+import { Container, Row } from 'react-bootstrap';
 import Movie from '../Movie/Movie';
+//import './favorite.css';
 
 
-function Fav(){
-    const [data, setData] = useState([]);
-
-    const getFavMovies = async () => {
-        
-        return await axios.get(`https://movie-hashem.herokuapp.com/trending`)
-            .then(result => {
-                // console.log(result.data);
-                return result.data;
-            }).catch((err) => {
-                console.log(err);
-            })
-    }
-
-    useEffect(()=>{
-        void(async()=>{
-          let data = await getFavMovies();
-          setData(data);
-        })();   
-    },[]);
-
+function Movielist({data}){
+ 
 
     return (
         <>
         <Container className='div-container'>
         <Row md={3}>
             {
-                data.length && data.map((ele ,inx) => (
-                    // <Col key={ele.id} md={4}>
-                    //     <Card className='div-card'>
-                    //         <Card.Img className='div-card-img' variant="top" src={`https://image.tmdb.org/t/p/w500/${ele.poster_path}`} />
-                    //         <Card.Body>
-                    //             <Card.Title className='div-card-title'>{ele.original_title}</Card.Title>
-                    //             <Card.Link className='div-card-link'>
-                    //                 {ele.poster_path}
-                    //             </Card.Link>
-                    //             <div>
-                    //                 <Button className='div-card-button' variant="primary" >Update</Button>
-                    //                 <Button className='div-card-button' variant="danger" >Delete</Button>
-
-                    //             </div>
-                    //         </Card.Body>
-                    //     </Card>
-                    // </Col>
-                    <Movie key={inx} data={data}/>
+                data.length && data.map((mov) => (
+                   
+                   <Movie mov ={mov}/>
                 ))
             }
         </Row>
     </Container>
 
-    {
-        !data.length && <div><h2>No Such Results, Please try again later</h2></div>
-    }
+  
 
 </>
+
     )
 }
 
-export default Fav;
+export default Movielist;
