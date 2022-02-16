@@ -10,7 +10,7 @@ const Navbar2 = () => {
     <Navbar.Brand to="/">Recipes</Navbar.Brand>
     <Nav className="me-auto">
       <Link className='link' to="/">Home</Link>
-      <Link className='link' to="/trending">Movelist</Link>
+      <Link className='link' to="/trending">Favorite</Link>
     </Nav>
     </Container>
   </Navbar>
