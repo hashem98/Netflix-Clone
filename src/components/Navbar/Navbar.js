@@ -1,16 +1,16 @@
 import React from 'react';
 import {Navbar,Container,Nav} from "react-bootstrap"
 import { Link } from 'react-router-dom';
-import "./navbar.css"
+import "../Navbar/Navbar.css"
 
 const Navbar2 = () => {
   return <div>
    <Navbar bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand to="/">Recipes</Navbar.Brand>
+    <Navbar.Brand to="/">Movies</Navbar.Brand>
     <Nav className="me-auto">
       <Link className='link' to="/">Home</Link>
-      <Link className='link' to="/trending">Favorite</Link>
+      <Link className='link' to="/getMovies">Favorite</Link>
     </Nav>
     </Container>
   </Navbar>
