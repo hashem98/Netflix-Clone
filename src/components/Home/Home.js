@@ -49,7 +49,7 @@ function Home() {
                   <Card.Img
                     className="div-card-img"
                     variant="top"
-                    src={ele.poster_path}
+                    src={`https://image.tmdb.org/t/p/w500/${ele.poster_path}`}
                   />
                   <Card.Body>
                     <Card.Title className="div-card-title">

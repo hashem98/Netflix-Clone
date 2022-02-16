@@ -34,7 +34,7 @@ function Fav(){
                 data.length && data.map((ele) => (
                     <Col key={ele.id} md={4}>
                         <Card className='div-card'>
-                            <Card.Img className='div-card-img' variant="top" src={ele.poster_path} />
+                            <Card.Img className='div-card-img' variant="top" src={`https://image.tmdb.org/t/p/w500/${ele.poster_path}`} />
                             <Card.Body>
                                 <Card.Title className='div-card-title'>{ele.original_title}</Card.Title>
                                 <Card.Link className='div-card-link'>
